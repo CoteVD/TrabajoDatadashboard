@@ -27,6 +27,30 @@ window.onload = () => {
 		//mostrar id de esos cohort y listarlos con innerHTML  
 		/*document.getElementById("showCohortList").innerHTML = cohortsIdText; */
 
+
+	//llamar con fetch a los nombres de las alumnas
+	const usersJSON = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
+	fetch(usersJSON) 
+	.then(response => response.json())
+	.then(data => {   
+		usersFull(data);
+	})	
+  const usersFull = data => {
+		let usersName = [];
+  data.forEach(elem => {
+		
+  //mostrar nombre de almunas
+  usersName.push(elem.name);
+	//transforme a texto los nombres
+  let userNameText = JSON.stringify(usersName);
+  
+  //mostrar nombres y listarlos con innerHTML  
+  document.getElementById("showNames").innerHTML = userNameText; 
+  });
+  
+	}
+}
+
 		//seccion botones
 		//area de busqueda
 		const btnSearch = document.getElementById('btnSearch').addEventListener('click', () => {
@@ -40,6 +64,7 @@ window.onload = () => {
 				
 		})
 		//seccion sedes
+
 
 		const lima = document.getElementById('btnLima');lima.addEventListener('click', () => {
 			document.getElementById('cohorts').style.display = 'block';
