@@ -43,14 +43,16 @@ window.onload = () => {
 
 		const lima = document.getElementById('btnLima');lima.addEventListener('click', () => {
 			document.getElementById('cohorts').style.display = 'block';
-			const datos = document.getElementById('nameCohort');
-			datos.innerHTML =`<p>cohortsIdText</p>`;
-			
-			/*let newNameCohort = [];
-			for (let i = 0; i < cohortsIdText.length; i++) {
-				newNameCohort.push(cohortsIdText);
+
+			let newNameCohort = '';
+			for (let i = 0; i < cohortsID.length; i++) {
+				newNameCohort += `<p>${cohortsID[i]}</p>`
 				console.log(newNameCohort);
-			}*/
+
+			const datos = document.getElementById('nameCohort');
+			datos.innerHTML = newNameCohort;
+			
+			}
 
 		})
 		
