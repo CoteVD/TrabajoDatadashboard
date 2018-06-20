@@ -26,6 +26,27 @@ window.onload = () => {
 	/*document.getElementById("showCohortList").innerHTML = cohortsIdText; */
 	}
 
+	//llamar con fetch a los nombres de las alumnas
+	const usersJSON = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
+	fetch(usersJSON) 
+	.then(response => response.json())
+	.then(data => {   
+		usersFull(data);
+	})	
+  const usersFull = data => {
+		let usersName = [];
+  data.forEach(elem => {
+		
+  //mostrar nombre de almunas
+  usersName.push(elem.name);
+	//transforme a texto los nombres
+  let userNameText = JSON.stringify(usersName);
+  
+  //mostrar nombres y listarlos con innerHTML  
+  document.getElementById("showNames").innerHTML = userNameText; 
+  });
+  
+	}
 }
 
 
