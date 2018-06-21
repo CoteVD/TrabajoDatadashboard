@@ -41,6 +41,8 @@ window.onload = () => {
 		})
 		//seccion sedes
 
+		//boton de lima imprime los cohort es una tarjeta
+		/*
 		const lima = document.getElementById('btnLima');lima.addEventListener('click', () => {
 			document.getElementById('cohorts').style.display = 'block';
 
@@ -51,11 +53,57 @@ window.onload = () => {
 
 			const datos = document.getElementById('nameCohort');
 			datos.innerHTML = newNameCohort;
-			
 			}
+		*/
 
-		})
+		//boton CDMX
+		const cdmx = document.getElementById('btnCDMX');cdmx.addEventListener('click', () => {
+			document.getElementById('listAlumnas').style.display = 'block';			
+		});
 		
+		//boton lima
+		const lima = document.getElementById('btnLima');
+		const tabla = document.getElementById('tableBody')
+		lima.addEventListener('click', () => {
+			document.getElementById('listAlumnas').style.display = 'block';
+			//recorre el arreglo de cohorts 	
+			let newNameCohort = '';
+			for (let i = 0; i < cohortsID.length; i++) {
+			//	newNameCohort += tableSede;
+				newNameCohort += `<tr>
+				${cohortsID[i]}</tr>`
+				console.log(newNameCohort);
+	
+			;
+			tabla.innerHTML = newNameCohort;
+			
+			/*
+			//intento de print en tabla
+			const printSede = () => {
+				let listSede = cohortsID();
+				let printList = document.getElementById('tableSede');
+				
+				printList.innerHTML = '';
+	
+				for (let j = 0; j < listSede.length; j++) {
+					let row = printList.insertRow(j);
+					let nameCohort = row.insertName();
+					nameCohort.innerHTML = listSede[j].name;
+				}
+			}
+			*/
+			}
+		});
+
+		//boton santiago
+		const santiago = document.getElementById('btnSantiago');santiago.addEventListener('click', () => {
+			document.getElementById('listAlumnas').style.display = 'block';
+		});
+
+		//boton sao paulo
+		const saoPaulo = document.getElementById('btnSaoPaulo');saoPaulo.addEventListener('click', () => {
+			document.getElementById('listAlumnas').style.display = 'block';
+		});
 	}
 	
 }

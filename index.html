@@ -22,10 +22,11 @@
                 Sedes
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Cuidad de México</a>
+                <a class="dropdown-item" 
+               id="btnCDMX" href="#">Cuidad de México</a>
                 <a class="dropdown-item" id="btnLima" href="#cohorts">Lima</a>
-                <a class="dropdown-item" href="#">Santiago</a>
-                <a class="dropdown-item" href="#">Sao Paulo</a>
+                <a class="dropdown-item" id="btnSantiago" href="#">Santiago</a>
+                <a class="dropdown-item" id="btnSaoPaulo" href="#">Sao Paulo</a>
               </div>
             </li>
           </ul>
@@ -46,17 +47,49 @@
       </div>
       <div class="container-fluid">
         <!-- seccion tarjetas de cohorts -->
-        <div id="cohorts" style="display:none;">
-          <div class="card" id="targetSede" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title" >Aqui va el nombre del cohort</h5>
-              <p class="card-text" id="nameCohort">ble</p>
-              <a href="#" class="btn btn-primary">Ingresar al Cohort</a>
+        <!-- 
+
+          <div id="cohorts" style="display:none;">
+            <div class="card" id="targetSede" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title" >Aqui va el nombre del cohort</h5>
+                <p class="card-text" id="nameCohort">ble</p>
+                <a href="#" class="btn btn-primary">Ingresar al Cohort</a>
+              </div>
             </div>
           </div>
-
-        </div>
+        -->
       </div>
+
+      <!-- seccion lista de cohorts -->
+      <div id="listAlumnas" style="display:none;">
+        <thead>
+          <table class="table table-hover" id="tableSede">
+            <tr>
+              <th scope="col">Nombre del cohort</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <tr>
+              <th scope="row">1</th>
+              <td>Nombre Cohort</td>
+              <td>Materias</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td></td>
+              <td></td>
+              <td></td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+
       <!-- seccion lista de alumnas -->
       <div id="listAlumnas" style="display:none;">
         <thead>
