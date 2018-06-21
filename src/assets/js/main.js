@@ -17,7 +17,7 @@ window.onload = () => {
 			if (elem.sede === "lima"){
 				//mostrar id de esos cohort	
 				cohortsID.push(elem.id);
-				console.log(cohortsID);
+				console.log(cohortsID.reverse()); 
 			} 
 		});
 		//transforme a texto los ids 
@@ -27,21 +27,7 @@ window.onload = () => {
 		//mostrar id de esos cohort y listarlos con innerHTML  
 		/*document.getElementById("showCohortList").innerHTML = cohortsIdText; */
 
-		//seccion botones
-		//area de busqueda
-		const btnSearch = document.getElementById('btnSearch').addEventListener('click', () => {
-			const searchA = document.getElementById('searchAlumnas').value;
-			//aqui deberia ir la funcion que permite imprimir el nombre de las alumnas
-			document.getElementById('cohorts').style.display = 'block';
-			document.getElementById('loader').style.display = 'block';
-			console.log(searchA);
-			document.getElementById('loader').innerText = cohortsIdText;
-			console.log(cohortsIdText);
-				
-		})
-		//seccion sedes
-
-		//boton de lima imprime los cohort es una tarjeta
+		//print de los cohorts de lima en tarjetas individuales
 		/*
 		const lima = document.getElementById('btnLima');lima.addEventListener('click', () => {
 			document.getElementById('cohorts').style.display = 'block';
@@ -54,13 +40,9 @@ window.onload = () => {
 			const datos = document.getElementById('nameCohort');
 			datos.innerHTML = newNameCohort;
 			}
+		});
 		*/
 
-		//boton CDMX
-		const cdmx = document.getElementById('btnCDMX');cdmx.addEventListener('click', () => {
-			document.getElementById('listAlumnas').style.display = 'block';			
-		});
-		
 		//boton lima
 		const lima = document.getElementById('btnLima');
 		const tabla = document.getElementById('tableBody')
@@ -70,29 +52,18 @@ window.onload = () => {
 			let newNameCohort = '';
 			for (let i = 0; i < cohortsID.length; i++) {
 			//	newNameCohort += tableSede;
-				newNameCohort += `<tr>
-				${cohortsID[i]}</tr>`
+				newNameCohort += `<tr><a href="#"> 
+				${cohortsID[i]}</a></tr>`
 				console.log(newNameCohort);
-	
-			;
-			tabla.innerHTML = newNameCohort;
 			
-			/*
-			//intento de print en tabla
-			const printSede = () => {
-				let listSede = cohortsID();
-				let printList = document.getElementById('tableSede');
-				
-				printList.innerHTML = '';
-	
-				for (let j = 0; j < listSede.length; j++) {
-					let row = printList.insertRow(j);
-					let nameCohort = row.insertName();
-					nameCohort.innerHTML = listSede[j].name;
-				}
-			}
-			*/
-			}
+			tabla.innerHTML = newNameCohort;
+			}		
+		});
+
+
+		//boton CDMX
+		const cdmx = document.getElementById('btnCDMX');cdmx.addEventListener('click', () => {
+			document.getElementById('listAlumnas').style.display = 'block';			
 		});
 
 		//boton santiago
@@ -109,5 +80,42 @@ window.onload = () => {
 }
 
 
-//
+
+//llamar con fetch a los nombres de las alumnas
+const usersJSON = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
+fetch(usersJSON) 
+.then(response => response.json())
+.then(data => {   
+	usersFull(data);
+})	
+const usersFull = data => {
+	let usersName = [];
+data.forEach(elem => {
+	
+//mostrar nombre de almunas
+usersName.push(elem.name);
+//transforme a texto los nombres
+let userNameText = JSON.stringify(usersName);
+
+//mostrar nombres y listarlos con innerHTML  
+document.getElementById("showNames").innerHTML = userNameText; 
+});
+
+
+//area de busqueda
+const btnSearch = document.getElementById('btnSearch').addEventListener('click', () => {
+	const searchA = document.getElementById('searchAlumnas').value;
+	//aqui deberia ir la funcion que permite imprimir el nombre de las alumnas
+	document.getElementById('cohorts').style.display = 'block';
+	document.getElementById('loader').style.display = 'block';
+	console.log(searchA);
+	document.getElementById('loader').innerText = cohortsIdText;
+	console.log(cohortsIdText);
+		
+})
+
+}
+
+
+
 
