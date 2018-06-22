@@ -52,7 +52,7 @@ window.onload = () => {
 			let newNameCohort = '';
 			for (let i = 0; i < cohortsID.length; i++) {
 			//	newNameCohort += tableSede;
-				newNameCohort += `<tr><a href="#"> 
+				newNameCohort += `<tr><a href="#" class='cohort'> 
 				${cohortsID[i]}</a></tr>`
 				console.log(newNameCohort);
 			
@@ -77,45 +77,78 @@ window.onload = () => {
 		});
 	}
 	
-}
-
-
-
-//llamar con fetch a los nombres de las alumnas
-const usersJSON = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
-fetch(usersJSON) 
-.then(response => response.json())
-.then(data => {   
-	usersFull(data);
-})	
-const usersFull = data => {
-	let usersName = [];
-data.forEach(elem => {
 	
-//mostrar nombre de almunas
-usersName.push(elem.name);
-//transforme a texto los nombres
-let userNameText = JSON.stringify(usersName);
-
-//mostrar nombres y listarlos con innerHTML  
-document.getElementById("showNames").innerHTML = userNameText; 
-});
-
-
-//area de busqueda
-const btnSearch = document.getElementById('btnSearch').addEventListener('click', () => {
-	const searchA = document.getElementById('searchAlumnas').value;
-	//aqui deberia ir la funcion que permite imprimir el nombre de las alumnas
-	document.getElementById('cohorts').style.display = 'block';
-	document.getElementById('loader').style.display = 'block';
-	console.log(searchA);
-	document.getElementById('loader').innerText = cohortsIdText;
-	console.log(cohortsIdText);
+	
+	
+	//llamar con fetch a los nombres de las alumnas
+	const usersJSON = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
+	fetch(usersJSON) 
+	.then(response => response.json())
+	.then(data => {   
+		usersFull(data);
+	})	
+	const usersFull = data => {
+		let usersName = [];
+		data.forEach(elem => {
+		//mostrar nombre de almunas
+		usersName.push(elem.name);
+		//transforme a texto los nombres
+		let userNameText = JSON.stringify(usersName);
 		
-})
+		//mostrar nombres y listarlos con innerHTML  
+		
+		const showAlumnas = document.getElementById('btnAlumnas');
+		const tableNames = document.getElementById('tableAlumnas')
+		showAlumnas.addEventListener('click', () => {
+			document.getElementById('showNames').style.display = 'block';
+			//print los nombres de las alumnas en una lista
+			let newListName = '';
+			for (let j = 0; j < usersName.length; j++) {
+				newListName += `<tr><a href="#" class='cohort'> 
+				${userName[j]}</a></tr>`
+				
+			
+			tableNames.innerHTML = newListName;
+			}		
+
+
+
+			
+	})
+
+		let tableAlumnas = document.getElementById('')
+		let newNameAlumna = '';
+		for (let j = 0; j < userNameText; j++) {
+			newNameAlumna += `<tr><a href='#' id='alumna'>${userNameText[j]}</a></tr>`
+			
+			
+		}
+		
+		
+		
+
+	});
+		
+	//area de busqueda
+	const btnSearch = document.getElementById('btnSearch').addEventListener('click', () => {
+		document.getElementById('showNames').style.display = 'block';
+		const searchA = document.getElementById('searchAlumnas').value;		
+		
+		//ejemplo mandy
+		window.filterUsers = (users, search) => {
+			var newUsers = [];
+			return users.filter((element) => {    
+				return element.name.toLowerCase().indexOf(search.toLowerCase()) >= 0;
+			});
+			return newUsers;
+		};	
+	})
+	}
+
+	
+		
+
+
+
 
 }
-
-
-
-

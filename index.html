@@ -21,6 +21,7 @@
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Sedes
               </a>
+              <!-- opciones del menu desplegables -->
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" 
                id="btnCDMX" href="#">Cuidad de México</a>
@@ -30,6 +31,7 @@
               </div>
             </li>
           </ul>
+          <!-- buscador -->
           <form class="form-inline my-2 my-lg-0">
             <input id="searchAlumnas" class="form-control mr-sm-2" type="search" placeholder="Búsqueda por alumna" aria-label="Search">
             <button id="btnSearch" class="btn btn-secondary" type="button"><i class="fas fa-search"></i></button>
@@ -38,14 +40,34 @@
       </nav>
     </header>
     <!-- dashboard -->
-
-    
-    
     <section>
-      <div id="showNames" style="display:none;" >
-        
-      </div>
       <div class="container-fluid">
+          <!-- seccion lista de estudiantes -->
+          <div id="showNames" style="display:none;">
+            <thead>
+              <table class="table table-hover">
+                <tr>
+                  <th scope="col">Nombre del cohort</th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                </tr>
+             </thead>
+              <tbody id="tableAlumnas">
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Nombre Cohort</td>
+                  <td>Materias</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         <!-- seccion tarjetas de cohorts -->
         <!-- 
 
@@ -63,35 +85,46 @@
 
       <!-- seccion lista de cohorts -->
       <div id="listAlumnas" style="display:none;">
-        <thead>
-          <table class="table table-hover" id="tableSede">
-            <tr>
-              <th scope="col">Nombre del cohort</th>
-              <th scope="col"></th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody id="tableBody">
-            <tr>
-              <th scope="row">1</th>
-              <td>Nombre Cohort</td>
-              <td>Materias</td>
-              <td></td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td></td>
-              <td></td>
-              <td></td>
-              </tr>
-          </tbody>
-        </table>
+        <div class="row">
+
+          <div class="col-6">
+            <thead>
+              <table class="table table-hover">
+                <tr>
+                  <th scope="col">Nombre del cohort</th>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody id="tableBody">
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Nombre Cohort</td>
+                  <td>Materias</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table> 
+          </div>
+          <div class="col-6">
+            <button type="button" id="btnAlumnas" class="btn btn-primary">Ver Alumnas</button>
+            
+          </div>
+          
+          
+        </div>
       </div>
-
-
-
-      <!-- seccion lista de alumnas -->
-      <div id="listAlumnas" style="display:none;">
+        
+        
+        
+        <!-- seccion lista de alumnas -->
+        <div id="listAlumnas" style="display:none;">
         <thead>
           <table class="table table-hover">
             <tr>
