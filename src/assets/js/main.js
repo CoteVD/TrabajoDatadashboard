@@ -1,6 +1,9 @@
 
 window.onload = () => {
 
+	const classCohort = document.getElementsByClassName('cohort')[0];
+	
+
 	//llamando al JSON con fetch
 	const cohortsJSON = 'data/cohorts.json';
 	fetch(cohortsJSON) 
@@ -9,7 +12,7 @@ window.onload = () => {
 		
 		cohortsFull(data);
 	})
-	
+
 	const cohortsFull = data => {
 		let cohortsID = [];
 		data.forEach(elem => {
@@ -75,75 +78,80 @@ window.onload = () => {
 		const saoPaulo = document.getElementById('btnSaoPaulo');saoPaulo.addEventListener('click', () => {
 			document.getElementById('listAlumnas').style.display = 'block';
 		});
-	}
-	
-	
-	
-	
-	//llamar con fetch a los nombres de las alumnas
-	const usersJSON = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
-	fetch(usersJSON) 
-	.then(response => response.json())
-	.then(data => {   
-		usersFull(data);
-	})	
-	const usersFull = data => {
-		let usersName = [];
-		data.forEach(elem => {
-		//mostrar nombre de almunas
-		usersName.push(elem.name);
-		//transforme a texto los nombres
-		let userNameText = JSON.stringify(usersName);
-		
-		//mostrar nombres y listarlos con innerHTML  
-		
-		const showAlumnas = document.getElementById('btnAlumnas');
-		const tableNames = document.getElementById('tableAlumnas')
-		showAlumnas.addEventListener('click', () => {
-			document.getElementById('showNames').style.display = 'block';
-			//print los nombres de las alumnas en una lista
-			let newListName = '';
-			for (let j = 0; j < usersName.length; j++) {
-				newListName += `<tr><a href="#" class='cohort'> 
-				${userName[j]}</a></tr>`
-				
-			
-			tableNames.innerHTML = newListName;
-			}		
 
 
 
-			
-	})
+		//llamar con fetch a los nombres de las alumnas
+		const usersJSON = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
+		fetch(usersJSON)
+			.then(response => response.json())
+			.then(data => {
+				usersFull(data);
+			})
+		const usersFull = data => {
+			let usersName = [];
+			data.forEach(elem => {
+				//mostrar nombre de almunas
+				usersName.push(elem.name);
+				//transforme a texto los nombre
 
-		let tableAlumnas = document.getElementById('')
-		let newNameAlumna = '';
-		for (let j = 0; j < userNameText; j++) {
-			newNameAlumna += `<tr><a href='#' id='alumna'>${userNameText[j]}</a></tr>`
-			
-			
-		}
-		
-		
-		
-
-	});
-		
-	//area de busqueda
-	const btnSearch = document.getElementById('btnSearch').addEventListener('click', () => {
-		document.getElementById('showNames').style.display = 'block';
-		const searchA = document.getElementById('searchAlumnas').value;		
-		
-		//ejemplo mandy
-		window.filterUsers = (users, search) => {
-			var newUsers = [];
-			return users.filter((element) => {    
-				return element.name.toLowerCase().indexOf(search.toLowerCase()) >= 0;
 			});
-			return newUsers;
-		};	
-	})
+
+
+
+			let userNameText = JSON.stringify(usersName);
+
+			//mostrar nombres y listarlos con innerHTML  
+
+			//const showAlumnas = document.getElementById('btnAlumnas');
+			const tableNames = document.getElementById('tableAlumnas');
+			const btnPrePeru = classCohort;
+			//showAlumnas.addEventListener('click', () => {
+			btnPrePeru.addEventListener('click', () => {
+				document.getElementById('listAlumnas').style.display = 'none';
+				document.getElementById('showNames').style.display = 'block';
+				console.log('hola');
+				//print los nombres de las alumnas en una lista
+				let newListName = '';
+				for (let j = 0; j < usersName.length; j++) {
+					newListName += `<tr><a href="#" class='name'> 
+			${usersName[j]}</a></tr>`
+
+
+					tableNames.innerHTML = newListName;
+				}
+				//tomar una alumna segun su posicion en el arreglo segun su clase
+				const className = document.getElementsByClassName('name')[0];
+				console.log(className);
+			})
+
+
+			//area de busqueda
+			const btnSearch = document.getElementById('btnSearch').addEventListener('click', () => {
+				document.getElementById('showNames').style.display = 'block';
+				const searchA = document.getElementById('searchAlumnas').value;
+
+				//ejemplo mandy
+				window.filterUsers = (users, search) => {
+					var newUsers = [];
+					return users.filter((element) => {
+						return element.name.toLowerCase().indexOf(search.toLowerCase()) >= 0;
+					});
+					return newUsers;
+				};
+			})
+		}
+
+
+
+
+
 	}
+	
+	
+	
+	
+	
 
 	
 		
