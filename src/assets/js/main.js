@@ -17,7 +17,7 @@ window.onload = () => {
 			if (elem.sede === "lima"){
 				//mostrar id de esos cohort	
 				cohortsID.push(elem.id);
-				console.log(cohortsID.reverse()); 
+				//console.log(cohortsID.reverse()); 
 			} 
 		});
 		//transforme a texto los ids 
@@ -54,7 +54,7 @@ window.onload = () => {
 			//	newNameCohort += tableSede;
 				newNameCohort += `<tr><a href="#" class='cohort'> 
 				${cohortsID[i]}</a></tr>`
-				console.log(newNameCohort);
+				//console.log(newNameCohort);
 			
 			tabla.innerHTML = newNameCohort;
 			}		
