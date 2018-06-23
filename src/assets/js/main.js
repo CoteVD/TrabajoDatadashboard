@@ -47,7 +47,7 @@ window.onload = () => {
 		const lima = document.getElementById('btnLima');
 		const tabla = document.getElementById('tableBody')
 		lima.addEventListener('click', () => {
-			document.getElementById('listAlumnas').style.display = 'block';
+			document.getElementById('listCohort').style.display = 'block';
 			//recorre el arreglo de cohorts 	
 			let newNameCohort = '';
 			for (let i = 0; i < cohortsID.length; i++) {
@@ -97,24 +97,21 @@ window.onload = () => {
 		
 		//mostrar nombres y listarlos con innerHTML  
 		
+		
 		const showAlumnas = document.getElementById('btnAlumnas');
 		const tableNames = document.getElementById('tableAlumnas')
 		showAlumnas.addEventListener('click', () => {
-			document.getElementById('showNames').style.display = 'block';
+			document.getElementById('listAlumnas').style.display = 'block';
 			//print los nombres de las alumnas en una lista
 			let newListName = '';
 			for (let j = 0; j < usersName.length; j++) {
-				newListName += `<tr><a href="#" class='cohort'> 
-				${userName[j]}</a></tr>`
-				
-			
-			tableNames.innerHTML = newListName;
+				newListName += `<tr><a href="#" class='name'> 
+				${usersName[j]}</a></tr>`
+	
+				tableNames.innerHTML = newListName;
 			}		
-
-
-
-			
-	})
+			console.log('hola');
+		});
 
 		let tableAlumnas = document.getElementById('')
 		let newNameAlumna = '';
