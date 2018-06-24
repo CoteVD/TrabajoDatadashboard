@@ -245,15 +245,30 @@ window.computeUsersStats = (users, progress, courses) => {
 	//asignando propiedad reads
 	alumna1.stats.reads = new reads(allReads, allCompletedReads, readPercent); 
 
-	return alumna1; 
-
-	
+	return alumna1; 	
     
 }
 	
 
 window.sortUsers = (users, orderBy, orderDirection) => {
-
+	// variable que guarda solo los nombres de las alumnas
+	let usersName =[];
+	users.forEach((user) =>{
+			usersName.push(user.name)
+		})
+	// ordenando por alfabetico	
+	let alphabetical = usersName.sort();
+	// al revez 
+	let reverse = alphabetical.reverse();
+	//variable que guarda solo los progresos totales 
+	
+	let usersValues = []; 
+	for (let i = 0; i<progress.length; i++){
+		usersValues.push(progress[i][1].intro) 
+	}
+	
+		
+	
 };
 
 window.filterUsers = (users, search) => {
