@@ -1,10 +1,7 @@
-
 window.onload = () => {
 	//varia
 	document.getElementsByClassName('cohort');
 	const className = document.getElementsByClassName('name')[0];
-
-	
 
 	//llamando al JSON con fetch
 	const cohortsJSON = 'data/cohorts.json';
@@ -58,10 +55,8 @@ window.onload = () => {
 			let newNameCohort = '';
 			for (let i = 0; i < cohortsID.length; i++) {
 			//	newNameCohort += tableSede;
-				newNameCohort += `<tr><a href="#" class='cohort'> 
+				newNameCohort += `<tr><a data-cohort="lima" href="#" class='cohort'> 
 				${cohortsID[i]}</a></tr>`
-
-				//console.log(classCohort);
 			
 			tabla.innerHTML = newNameCohort;
 			}		
@@ -97,12 +92,8 @@ window.onload = () => {
 		data.forEach(elem => {
 			//mostrar nombre de almunas
 			usersName.push(elem.name);
-			//transforme a texto los nombre
-
 		});
-
-
-
+		//transforme a texto los nombre
 	let userNameText = JSON.stringify(usersName);
 
 	//mostrar nombres y listarlos con innerHTML  
@@ -118,28 +109,51 @@ window.onload = () => {
 		//print los nombres de las alumnas en una lista
 		let newListName = '';
 		for (let j = 0; j < usersName.length; j++) {
-			newListName += `<tr><a href="#" class='name'>${usersName[j]}</a></tr>`
+			newListName += `<tr><a href="#" data-alumna="${usersName[j]}" class='name'>${usersName[j]}</a></tr>`
 
 			tableNames.innerHTML = newListName;	
 		}
 	});
 
 	//area de busqueda
-	const search = document.getElementById('btnSearch');
-	search.addEventListener('click', () => {
-		const student = document.getElementById('search').value
-		console.log('student');
+	const btnSearchA = document.getElementById('btnSearch');
+	btnSearchA.addEventListener('click', () => {
+		//console.log(search);
+		let input = document.getElementById('search').value;
+		let filter = input.toUpperCase();
 		
+		let resultSearch = '';
+		for (let k = 0; k < usersName.length; k++) {
+
+			
+			if (filter === usersName[k]) {
+				document.getElementById('resultSearch').innerHTML = 'hola';
+
+				document.getElementById('resultSearch').innerHTML = resultSearch;
+				console.log('si esta');
+				
+
+
+			
+			//if (enlace.innerHTML.toUpperCase().indexOf(filter) > -1) {
+				
+			} else {
+				console.log('no esta');
+				
+			}
+		}
+
 		/*
-		let searchStudent = (usersName, searchA) => {
+		let searchStudent = (users, search) => {
 			let newSearchStudent = [];
-			return usersName.filter((element) => {
-				return element.toLowerCase().indexOf
-				(searchA.toLowerCase()) >= 0;
+			return users.filter((element) => {
+				return element.name.toLowerCase().indexOf
+				(search.toLowerCase()) >= 0;
 			});
 			return newSearchStudent;
 		}
 		*/
+	
 		
 		
 		/*
@@ -151,8 +165,9 @@ window.onload = () => {
 			});
 			return newUsers;
 		};
-		
 		*/
+		
+		
 	})
 }
 	
