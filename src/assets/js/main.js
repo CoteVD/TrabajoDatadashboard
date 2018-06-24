@@ -19,7 +19,9 @@ window.onload = () => {
 			if (elem.sede === "lima"){
 				//mostrar id de esos cohort	
 				cohortsID.push(elem.id);
+
 				cohortsID.reverse(elem.id);
+
 				//console.log(cohortsID.reverse()); 
 			} 
 		});
@@ -57,6 +59,9 @@ window.onload = () => {
 			//	newNameCohort += tableSede;
 				newNameCohort += `<tr><a data-cohort="lima" href="#" class='cohort'> 
 				${cohortsID[i]}</a></tr>`
+
+				//console.log(newNameCohort);
+
 			
 			tabla.innerHTML = newNameCohort;
 			}		
@@ -156,16 +161,7 @@ window.onload = () => {
 	
 		
 		
-		/*
-		//ejemplo mandy
-		window.filterUsers = (users, search) => {
-			var newUsers = [];
-			return users.filter((element) => {
-				return element.name.toLowerCase().indexOf(search.toLowerCase()) >= 0;
-			});
-			return newUsers;
-		};
-		*/
+	
 		
 		
 	})
