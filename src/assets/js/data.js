@@ -45,16 +45,8 @@ window.computeUsersStats = (users, progress, courses) => {
 		this.excercises= excercises; //ejercicios
 		this.quizzes = quizzes; //quizz
 		this.reads = reads;//lectura
+		}
 	}
-}
-	//creando alumna de prueba 
-	let alumna1 = new User(users[0].id, users[0].name, users[0].signupCohort);
-	//asignando propiedad stats
-	alumna1.stats = new Stats (progress[0][1].intro.percent, progress.find(element => element[0] === users[0].id), "ejercicios", "quizz", "lecturas" );
-	//asignando cursos a la alumna
-	//alumna1.stats.courses = progress.find(element => element[0] === users[0].id);
-	//obteniendo progreso general de la alumna
-	//alumna1.stats.percent = progress[0][1].intro.percent;
 
 	//desglosando informacion de JSON progress de la unidad 1
 	let allUnits = progress[0][1].intro.units; // unidades
@@ -79,8 +71,8 @@ window.computeUsersStats = (users, progress, courses) => {
 	//ciclo for para sacar solo los tipo excersises
 	arrPartsUnits.forEach((element)=> {
 		if (element[1].type === "practice") {uni1Exc.push(element)} else { uni1Exc.push("0")}});
-	/////////////////////////////////////////////////////////////////////unidad2
-	let partesUnidad2 = arrAllUnits[1][1].parts; // partes u2
+	//////////////////////////////////////////////////////////////////////////////////////////////unidad2
+	let partesUnidad2 = arrAllUnits[2][1].parts; // partes u2
 	let arrPartesUnidad2 = Object.entries(partesUnidad2); // array de partes de la unidad 2
 	let u2Type = arrPartesUnidad2[0][1].type // tipo de la parte 1, de la unidad 2
 	let readsU2 = []; //variable para mostrar solo los tipo reads.
@@ -122,6 +114,8 @@ window.computeUsersStats = (users, progress, courses) => {
 	arrPartesUnidad3.forEach((parte)=> {
 		if (parte[1].type === "practice"){ excU3.push(parte)}});	
 
+	///////////////////////////////////////////////////////////////////////obteniendo resultados	
+
 	//obteniendo total de quiz completados 
 		//variables con quiz de cada unidad
 		let completedQuizU1 = "";
@@ -129,13 +123,13 @@ window.computeUsersStats = (users, progress, courses) => {
 		let completedQuizU3 = "";
 		//validando si estan completos
 		if (uni1Quiz[0][1].completed === 1 ){
-			completedQuizU2 += 1;
+			completedQuizU1++;
 		}		
 		if (quizU2[0][1].completed === 1 ){
-			completedQuizU2 += 1;
+			completedQuizU2++;
 		}		
 		if (quizU3[0][1].completed === 1 ){
-			completedQuizU3 += 1;
+			completedQuizU3++;
 		}
 		// variable que suma todos los completados 
 		let allCompletedQuiz = completedQuizU1 + completedQuizU2 + completedQuizU3;
@@ -146,15 +140,21 @@ window.computeUsersStats = (users, progress, courses) => {
 		let completedreadU2 = "";
 		let completedreadU3 = "";
 		//validando si estan completos
-		if (uni1Reads[0][1].completed === 1 ){
-			completedreadU1 += 1;
-		}		
-		if (readsU2[0][1].completed === 1 ){
-			completedreadU2 += 1;
-		}		
-		if (readsU3[0][1].completed === 1 ){
-			completedreadU3 += 1;
-		}
+		uni1Reads.forEach((parte) => {
+			if (parte[1].completed === 1 ){
+				completedreadU1++;
+			}	
+		});
+		readsU2.forEach((parte) => {
+			if (parte[1].completed === 1 ){
+				completedreadU2++;
+			}	
+		});
+		readsU3.forEach((parte) => {
+			if (parte[1].completed === 1 ){
+				completedreadU3++;
+			}	
+		});
 		// variable que suma todos los completados 
 		let allCompletedReads = completedreadU1 + completedreadU2 + completedreadU3;
 
@@ -165,17 +165,30 @@ window.computeUsersStats = (users, progress, courses) => {
 		let completedexcU3 = "";
 		//validando si estan completos
 		if (uni1Exc === 1 ){
-			completedexcU1 += 1;
+			completedexcU1++;
 		}	;	
 		if (excU2 === 1 ){
-			completedexcU2 += 1;
+			completedexcU2++;
 		}	;	
-		if (excU3[0][1].completed === 1 ){
-			completedexcU3 += 1;
+		if (excU3 === 1 ){
+			completedexcU3++;
 		} ;
 		// variable que suma todos los completados 
 		let allCompletedExc = completedexcU1 + completedexcU2 + completedexcU3;
 
+	//creando alumna de prueba 
+	let alumna1 = new User(users[0].id, users[0].name, users[0].signupCohort);
+	//asignando propiedad stats
+	alumna1.stats = new Stats (progress[0][1].intro.percent, progress.find(element => element[0] === users[0].id), allCompletedExc, allCompletedQuiz, allCompletedReads );
+	//asignando cursos a la alumna
+	alumna1.stats.courses = progress.find(element => element[0] === users[0].id);
+	//obteniendo progreso general de la alumna
+	alumna1.stats.percent = progress[0][1].intro.percent;
+
+	return alumna1; 
+
+	//creando alumna de test 
+    
 }
 	
 
