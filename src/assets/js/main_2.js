@@ -2,6 +2,7 @@ let cohortsID = [];
 let usersName = [];
 
 window.onload = () => {
+   
 	//varia
 	document.getElementsByClassName('cohort');
 	const className = document.getElementsByClassName('name')[0];
@@ -50,18 +51,19 @@ window.onload = () => {
 			}
 		});
 		*/
-
 		//boton lima
 		const lima = document.getElementById('btnLima');
 		const tabla = document.getElementById('tableBody')
 		lima.addEventListener('click', () => {
+            llamar();
 			document.getElementById('listCohort').style.display = 'block';
 			//recorre el arreglo de cohorts 	
 			let newNameCohort = '';
 			for (let i = 0; i < cohortsID.length; i++) {
 			//	newNameCohort += tableSede;
-				newNameCohort += `<tr><a data-cohort="lima" onclick="mostrar()" class='cohort'> 
-				${cohortsID[i]}</a></tr>`
+				newNameCohort += `<tr><a data-cohort="lima"  class='cohort'> 
+                ${cohortsID[i]}</a></tr>
+                <button class="btn" onclick="mostrar()"> Ver Alumnas </button>`
 
 				//console.log(newNameCohort);
 
@@ -109,16 +111,6 @@ window.onload = () => {
 }
 
 
-//mostrar nombres y listarlos con innerHTML  
-
-const showAlumnas = document.getElementById('btnAlumnas');
-
-//const btnPrePeru = document.getElementsByClassName('cohort');
-showAlumnas.addEventListener('click', () => {
-//btnPrePeru.addEventListener('click', () => {
-	
-});
-
 //area de busqueda
 const btnSearchA = document.getElementById('btnSearch');
 btnSearchA.addEventListener('click', () => {
@@ -158,6 +150,8 @@ btnSearchA.addEventListener('click', () => {
 	}
 	*/
 
+	
+	
 
 	
 	
