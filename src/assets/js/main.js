@@ -1,4 +1,6 @@
 window.onload = () => {
+
+	
 	//varia
 	document.getElementsByClassName('cohort');
 	const className = document.getElementsByClassName('name')[0];
@@ -85,32 +87,43 @@ window.onload = () => {
 
 	}	
 
-	//llamar con fetch a los nombres de las alumnas
-	const usersJSON = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
-	fetch(usersJSON)
-		.then(response => response.json())
-		.then(data => {
-			usersFull(data);
-		})
-	const usersFull = data => {
+	
+	function mostrarAlumnas (cohortsID[i]) {
+		//llamar con fetch a los nombres de las alumnas
+		let usersJSON = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
+		fetch(usersJSON)
+			.then(response => response.json())
+			.then(data => {
+				usersFull(data);
+			})
 		let usersName = [];
-		data.forEach(elem => {
-			//mostrar nombre de almunas
-			usersName.push(elem.name);
-		});
-		//transforme a texto los nombre
-	let userNameText = JSON.stringify(usersName);
+		let currentUserID = [];
+		const usersFull = data => {
+			data.forEach(elem => {
+				//mostrar nombre de almunas
+				usersName.push(elem.name);
+			});
+			//transforme a texto los nombre
+		let userNameText = JSON.stringify(usersName);
+		console.log(userNameText);
+		
+	
+		//mostrar nombres y listarlos con innerHTML  
+	
+		const showAlumnas = document.getElementById('btnAlumnas');
+		const tableNames = document.getElementById('tableAlumnas');
+		//const btnPrePeru = document.getElementsByClassName('cohort');
+		showAlumnas.addEventListener('click', () => {
+		//btnPrePeru.addEventListener('click', () => {
+			document.getElementById('listCohort').style.display = 'none';
+			document.getElementById('showNames').style.display = 'block';
+			console.log('hola');
 
-	//mostrar nombres y listarlos con innerHTML  
+	}	
 
-	const showAlumnas = document.getElementById('btnAlumnas');
-	const tableNames = document.getElementById('tableAlumnas');
-	//const btnPrePeru = document.getElementsByClassName('cohort');
-	showAlumnas.addEventListener('click', () => {
-	//btnPrePeru.addEventListener('click', () => {
-		document.getElementById('listCohort').style.display = 'none';
-		document.getElementById('showNames').style.display = 'block';
-		console.log('hola');
+
+
+
 		//print los nombres de las alumnas en una lista
 		let newListName = '';
 		for (let j = 0; j < usersName.length; j++) {
@@ -134,7 +147,7 @@ window.onload = () => {
 		let percentBarra = progress[0][1].intro.percent
 		document.getElementById('showProgress').innerHTML = `<p>Progreso General</p><div class="progress"><div class="progress-bar" role="progressbar" style="width: ${percentBarra}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">${progress[0][1].intro.percent}%</div></div>`
 
-		document.getElementById('showCourses').innerHTML = `<p>Courses ${progres[1][1]}</p><div class="progress">
+		document.getElementById('showCourses').innerHTML = `<p>Courses ${progress[1][1]}</p><div class="progress">
 		<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
 	</div> `
 
