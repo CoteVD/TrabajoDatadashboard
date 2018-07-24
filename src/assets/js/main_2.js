@@ -1,7 +1,9 @@
 let cohortsID = [];
 let usersName = [];
+;
 
 window.onload = () => {
+   
 	//varia
 	document.getElementsByClassName('cohort');
 	const className = document.getElementsByClassName('name')[0];
@@ -86,9 +88,9 @@ window.onload = () => {
 		const saoPaulo = document.getElementById('btnSaoPaulo');saoPaulo.addEventListener('click', () => {
 			document.getElementById('listAlumnas').style.display = 'block';
 		});
-
 	}	
-    //"ver alumnas"
+
+  //"ver alumnas"
 	//llamar con fetch a los nombres de las alumnas
 	function llamar(){
 		const usersJSON ='../data/cohorts/lim-2018-03-pre-core-pw/users.json';
@@ -114,30 +116,12 @@ window.onload = () => {
 const btnSearchA = document.getElementById('btnSearch');
 btnSearchA.addEventListener('click', () => {
 	//console.log(search);
-	let input = document.getElementById('search').value;
-	let filter = input.toUpperCase();
+	console.log('hola');
+	filterName();
 	
-	let resultSearch = '';
-	for (let k = 0; k < usersName.length; k++) {
-
-		
-		if (filter === usersName[k]) {
-			document.getElementById('resultSearch').innerHTML = 'hola';
-
-			document.getElementById('resultSearch').innerHTML = resultSearch;
-			console.log('si esta');
-			
-
-
-		
-		//if (enlace.innerHTML.toUpperCase().indexOf(filter) > -1) {
-			
-		} else {
-			console.log('no esta');
-			
-		}
-	}
-
+	
+	
+	
 	/*
 	let searchStudent = (users, search) => {
 		let newSearchStudent = [];
@@ -148,25 +132,80 @@ btnSearchA.addEventListener('click', () => {
 		return newSearchStudent;
 	}
 	*/
-
-	
-	
-
-	
-	
 })
+} //cierre de window onload
+
+let filterName = () => {
+	
+	let input = document.getElementById('search').value;
+	let inputToCase = input.toLowerCase();
+		
+	
+		let alumnaEncontrada = usersName.find(element =>
+		element.toLowerCase() ===	inputToCase)
+		
+		//console.log(objetoDeAlumnaEncontrada);
+		
+		
+		let mostrarResultado = document.getElementById('resultSearch')
+		mostrarResultado.innerHTML = alumnaEncontrada ;
+		
+		
+		
+	
+
 }
+
 
 function mostrar(){
 	const tableNames = document.getElementById('tableAlumnas');
 	document.getElementById('listCohort').style.display = 'none';
 	document.getElementById('showNames').style.display = 'block';
-	console.log('hola');
-	//print los nombres de las alumnas en una lista
-	let newListName = '';
-	for (let j = 0; j < usersName.length; j++) {
-		newListName += `<tr><a href="#" data-alumna="${usersName[j]}" class='name'>${usersName[j]}</a></tr>`
+	
+/*	
+users.forEach(elem => {
+		let complete = progress.find(element => element[0] === elem.id);
+		let completedProgress = Object.values(complete); 
+		completedProgress.forEach(elem => {
+				let intro = elem.intro; 
+				
+				if(intro !== undefined || intro !== null) {
+					//console.log(porcentajeGeneral);
+					//print los nombres de las alumnas en una lista
+					let porcentajeGeneral = intro.percent; 
+					let newListName = '';
+					for (let j = 0; j < usersName.length; j++) {
+						newListName += `<tr><a href="#" data-alumna="${usersName[j]}" class='name'>${usersName[j]}</a></tr>
+						<tr><a href="#" data-alumna="${usersName[j]}" class='name'>${usersName[j]}</a></tr>
+						<tr><a href="#" data-alumna="${usersName[j]}" class='name'>${usersName[j]}</a></tr>
+						<tr><a href="#" data-alumna="${usersName[j]}" class='name'>${usersName[j]}</a></tr>
+						`
+						tableNames.innerHTML = newListName;	
+						
+					}
+				} else {
+					console.log("error")
+				}	 
+		})
+	})
+	*/
+}	
 
-		tableNames.innerHTML = newListName;	
-	}
-}
+
+//btn alumna prueba
+	const prueba = document.getElementById('btnPrueba');
+	prueba.addEventListener('click', () => {
+		document.getElementById('perfilAlumnas').style.display = 'block';
+		console.log(window.computeUsersStats(users, progress, courses));
+	
+	
+		document.getElementById('showUsers').innerHTML = `<p>${users[1].name}</p><p>${users[0].signupCohort}</p><p>${progress[0][1].intro.percent}</p>`
+		//progreso general
+		let percentBarra = progress[0][1].intro.percent
+		document.getElementById('showProgress').innerHTML = `<p>Progreso General</p><div class="progress"><div class="progress-bar" role="progressbar" style="width: ${percentBarra}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">${progress[0][1].intro.percent}%</div></div>`
+		document.getElementById('showCourses').innerHTML = `<p>Courses ${progres[1][1]}</p><div class="progress">
+		<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+		</div> `
+
+	});
+	
