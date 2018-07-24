@@ -110,10 +110,10 @@ window.computeUsersStats = (
 
 
 // Ésta función ordena por orden alfabetico a las alumnas.
-window.sortUsers = (users, orderBy, orderDirection) => {
+window.onToggleSort = (users, orderBy, orderDirection) => {
   if (orderBy === "name") {
     return users.sort((a, b) => {
-      if (orderDirection == "Ascendente") {
+      if (orderDirection == "Orden de completitud ascendente") {
         return a.name.localeCompare(b.name);
       } else {
         return a.name.localeCompare(b.name) * -1;
@@ -123,7 +123,7 @@ window.sortUsers = (users, orderBy, orderDirection) => {
 
   if (orderBy === "percent") {
     return users.sort((a, b) => {
-      if (orderDirection == "Ascendente") {
+      if (orderDirection == "Orden de completitud ascendente") {
         return a.stats.percent - b.stats.percent;
       } else {
         return (a.stats.percent - b.stats.percent) * -1;
