@@ -158,8 +158,6 @@ btnSearchA.addEventListener('click', () => {
 	}
 	*/
 
-	
-	
 
 	
 	
