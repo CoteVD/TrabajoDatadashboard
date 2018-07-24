@@ -261,10 +261,16 @@ window.sortUsers = (users, orderBy, orderDirection) => {
 	// al revez 
 	let reverse = alphabetical.reverse();
 	//variable que guarda solo los progresos totales 
-	
 	let usersValues = []; 
+	let totalPercents = []; 
 	for (let i = 0; i<progress.length; i++){
-		usersValues.push(progress[i][1].intro) 
+		usersValues.push(progress[i][1]) 
+	}
+	//validando que tengan percent 
+	for(let user in usersValues){
+		if (usersValues[user].hasOwnProperty('intro')){
+			totalPercents.push(usersValues[user].intro.percent)
+		}
 	}
 	
 		

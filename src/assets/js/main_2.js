@@ -114,60 +114,67 @@ window.onload = () => {
 //area de busqueda
 const btnSearchA = document.getElementById('btnSearch');
 btnSearchA.addEventListener('click', () => {
-	//console.log(search);
+	filterName();	
+	})
+}
+
+let filterName = () => {
+	
 	let input = document.getElementById('search').value;
-	let filter = input.toUpperCase();
-	
-	let resultSearch = '';
-	for (let k = 0; k < usersName.length; k++) {
-
+	let inputToCase = input.toLowerCase();
 		
-		if (filter === usersName[k]) {
-			document.getElementById('resultSearch').innerHTML = 'hola';
-
-			document.getElementById('resultSearch').innerHTML = resultSearch;
-			console.log('si esta');
-			
-
-
+		let alumnaEncontrada = usersName.find(element =>
+		element.toLowerCase() ===	inputToCase);
 		
-		//if (enlace.innerHTML.toUpperCase().indexOf(filter) > -1) {
-			
-		} else {
-			console.log('no esta');
-			
-		}
-	}
-
-	/*
-	let searchStudent = (users, search) => {
-		let newSearchStudent = [];
-		return users.filter((element) => {
-			return element.name.toLowerCase().indexOf
-			(search.toLowerCase()) >= 0;
-		});
-		return newSearchStudent;
-	}
-	*/
-
-	
-	
-
-	
-	
-})
+		//console.log(objetoDeAlumnaEncontrada);
+		
+		let mostrarResultado = document.getElementById('resultSearch')
+		mostrarResultado.innerHTML = alumnaEncontrada ;
+		
 }
 
 function mostrar(){
+	
+	imprimirAlumnas();
+	imprimirPorcentaje();
+	
+	//console.log('hola');
+
+			
+}
+
+function imprimirAlumnas(){
 	const tableNames = document.getElementById('tableAlumnas');
 	document.getElementById('listCohort').style.display = 'none';
 	document.getElementById('showNames').style.display = 'block';
-	console.log('hola');
-	//print los nombres de las alumnas en una lista
-	let newListName = '';
-	for (let j = 0; j < usersName.length; j++) {
-		newListName += `<tr><a href="#" data-alumna="${usersName[j]}" class='name'>${usersName[j]}</a></tr>`
+		//print los nombres de las alumnas en una lista
+		let newListName = '';
+	
+		for (let j = 0; j < usersName.length; j++) {
+			tableNames.innerHTML = newListName;	
+			newListName += `
+			  <p>
+				${usersName[j]}
+				</p>`;
 
-		tableNames.innerHTML = newListName;	
+		
+			}
+}
+
+function imprimirPorcentaje(){
+	const tableProgress = document.getElementById('tableProgress');
+	//sacando solo un valor de porcentaje
+	let newProgressList = '';
+	for (let a = 0; a <testeando.length; a++) {
+		
+		tableProgress.innerHTML = newProgressList;	
+		//console.log(testeando[a]);
+		newProgressList += `
+		<p>
+		 ${testeando[a]}
+		</p> 
+		`;
+
+			
 	}
 }
