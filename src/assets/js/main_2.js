@@ -1,6 +1,6 @@
 let cohortsID = [];
 let usersName = [];
-;
+
 
 window.onload = () => {
    
@@ -140,20 +140,14 @@ let filterName = () => {
 	let input = document.getElementById('search').value;
 	let inputToCase = input.toLowerCase();
 		
-	
 		let alumnaEncontrada = usersName.find(element =>
 		element.toLowerCase() ===	inputToCase)
 		
 		//console.log(objetoDeAlumnaEncontrada);
 		
-		
 		let mostrarResultado = document.getElementById('resultSearch')
 		mostrarResultado.innerHTML = alumnaEncontrada ;
 		
-		
-		
-	
-
 }
 
 
