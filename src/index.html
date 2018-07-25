@@ -40,39 +40,62 @@
     <!--Primera página HTML con la primera búsqueda-->
     <div class="col-lg-9 p-0" id="search">
       <h3 class="heavy bg-warning text-start p-3">Data Dashboard</h3>
-      <!--Menú países-->
+      <!--Menú países y cohort-->
       <select class="menu">
-        <option value="Sede">Seleccione la sede</option>
-        <option value="Brasil" disabled>Brasil</option>
-        <option value="Chile" disabled>Chile</option>
-        <option value="Mexico" disabled>México</option>
-        <option value="Peru">Perú</option>
+        <option value="example">Sede Perú</option>
+        <option value="cohort1" onclick="courseData()">lim-2018-03-pre-core-pw</option>
       </select>
-      <!--Menú cohorts-->
-      <select class="menu">
-        <option value="example">Elegir cohort</option>
-        <option value="cohort1">lim-2018-03-pre-core-pw</option>
-      </select>
-      <!--Botón de select que muestra la data general-->
-      <button id="generalData" onclick="generalInfo()">Continuar</button>
     </div>
-    <!--Aquí va el titulo Data dashboard que muestra los nombres e ID de alumnas-->
+    <!--Aquí va el titulo Data dashboard que muestra los nombres de las alumnas-->
     <div class="col-lg-9 p-0" id="generalResults">
       <h3 class="heavy bg-warning text-start p-3">Data Dashboard</h3>
       <div class="row">
-      <!--Menú alumnas-->
-      <input type="text" id="studentSearch" class="ml-3" onkeyup="searchStudent()" placeholder="Search for student.." title="Alumna">
-
-      <!--Menú orden-->
-      <div>
-        <button id="toggleSort" class="ml-3" onclick="onToggleSort()">Orden de completitud ascendente</button>
+        <!--Menú alumnas-->
+        <input type="text" id="studentSearch" class="ml-3" onkeyup="searchStudent()" placeholder="Search for student.." title="Alumna">
+        <!--Menú orden-->
+        <div>
+          <button id="toggleSort" class="ml-3" onclick="onToggleSort()">Orden de completitud ascendente</button>
+        </div>
       </div>
-    </div>
       <!--Cohort-->
       <h4 class="pt-5 pl-4 heavy">Lim-2018-03-pre-core-pw</h4>
-      <!--Aquí va contenedor de la data seleccionada-->
+      <!--Aquí va el contenedor con los datos del cohort-->
       <div class="container-fluid">
-        <ul class="pl-0" id="nameList"></ul>
+        <div class="row">
+          <div class="col">
+            <h4>% Lecturas del curso</h4>
+            <h3 id="totalReads"></h3>
+          </div>
+          <div class="col">
+            <h4>% Quizzes del curso</h4>
+            <h3 id="totalQuizzes"></h3>
+          </div>
+          <div class="col">
+            <h4>% Ejercicios del curso</h4>
+            <h3 id="totalExercises"></h3>
+          </div>
+          <div class="col">
+            <h4>% Total de completitud</h4>
+            <h3 id="courseTotal"></h3>
+          </div>
+        </div>
+      </div>
+      <!--Aquí va contenedor de la data de las alumnas del cohort seleccionado-->
+      <div class="container-fluid">
+        <table id="studentsData" class="table table-sm">
+          <thead>
+            <tr class="table-warning">
+              <th>N°</th>
+              <th>Nombre</th>
+              <th>Lecturas</th>
+              <th>Quizzes</th>
+              <th>Ejercicios</th>
+              <th>Porcentaje de completitud</th>
+            </tr>
+          </thead>
+          <tbody id="studentsName">
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
