@@ -1,7 +1,7 @@
 	let users = [];
 	let progress = [];
 	let courses = []; 
-
+	let testeando = [];
  //function obtener datos users
 	//llamando al JSON con fetch
 	const usersJSON = '../data/cohorts/lim-2018-03-pre-core-pw/users.json';
@@ -256,13 +256,30 @@ window.computeUsersStats = (users, progress, courses) => {
         let completedProgress = Object.values(complete); 
         completedProgress.forEach(elem => {
             let intro = elem.intro; 
+
+						//console.log(intro);
+            //if(intro === undefined || intro == null) {
+						if(elem.hasOwnProperty('intro')){	
+							testeando.push(intro.percent) ;
+							
+						} // else {
+						// 	testeando.push(0) ; 	 
+								
+										
+								
+						// 		//let percent = elem.intro.percent; 
+								
+            //     //console.log('testeando' + testeando);
+            //     //console.log(percent); 
+            // }
+
 						
-            if(intro === undefined || intro == null) {
+            //if(intro === undefined || intro == null) {
 					
-            } else {
-                let testeando = intro.percent; 
+            //} else {
+            //    let testeando = intro.percent; 
                 //console.log(testeando); 
-            }
+            //}
            
         })
         const alumna = {

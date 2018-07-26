@@ -115,6 +115,72 @@ window.onload = () => {
 //area de busqueda
 const btnSearchA = document.getElementById('btnSearch');
 btnSearchA.addEventListener('click', () => {
+
+	filterName();	
+	})
+}
+
+let filterName = () => {
+	
+	let input = document.getElementById('search').value;
+	let inputToCase = input.toLowerCase();
+		
+		let alumnaEncontrada = usersName.find(element =>
+		element.toLowerCase() ===	inputToCase);
+		
+		//console.log(objetoDeAlumnaEncontrada);
+		
+		let mostrarResultado = document.getElementById('resultSearch')
+		mostrarResultado.innerHTML = alumnaEncontrada ;
+		
+}
+
+function mostrar(){
+	
+	imprimirAlumnas();
+	imprimirPorcentaje();
+	
+	//console.log('hola');
+
+			
+}
+
+function imprimirAlumnas(){
+	const tableNames = document.getElementById('tableAlumnas');
+	document.getElementById('listCohort').style.display = 'none';
+	document.getElementById('showNames').style.display = 'block';
+		//print los nombres de las alumnas en una lista
+		let newListName = '';
+	
+		for (let j = 0; j < usersName.length; j++) {
+			tableNames.innerHTML = newListName;	
+			newListName += `
+			  <p>
+				${usersName[j]}
+				</p>`;
+
+		
+			}
+}
+
+function imprimirPorcentaje(){
+	const tableProgress = document.getElementById('tableProgress');
+	//sacando solo un valor de porcentaje
+	let newProgressList = '';
+	for (let a = 0; a <testeando.length; a++) {
+		
+		tableProgress.innerHTML = newProgressList;	
+		//console.log(testeando[a]);
+		newProgressList += `
+		<p>
+		 ${testeando[a]}
+		</p> 
+		`;
+
+			
+	}
+}
+
 	//console.log(search);
 	console.log('hola');
 	filterName();
@@ -203,3 +269,4 @@ users.forEach(elem => {
 
 	});
 	
+
