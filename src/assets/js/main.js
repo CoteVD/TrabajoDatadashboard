@@ -2,6 +2,8 @@ let cohortsID = [];
 let usersName = [];
 
 window.onload = () => {
+
+	
 	//varia
 	document.getElementsByClassName('cohort');
 	const className = document.getElementsByClassName('name')[0];

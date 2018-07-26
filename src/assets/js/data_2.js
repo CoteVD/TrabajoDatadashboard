@@ -28,7 +28,7 @@
 	})	
 
 //funcion  que debe contener toda la info
-computeUsersStats = (users, progress, courses) => {
+window.computeUsersStats = (users, progress, courses) => {
 	//objeto constructor para crear usuarios
 	class User {
 	  constructor(id, name, cohort){
@@ -256,6 +256,7 @@ computeUsersStats = (users, progress, courses) => {
         let completedProgress = Object.values(complete); 
         completedProgress.forEach(elem => {
             let intro = elem.intro; 
+
 						//console.log(intro);
             //if(intro === undefined || intro == null) {
 						if(elem.hasOwnProperty('intro')){	
@@ -271,6 +272,14 @@ computeUsersStats = (users, progress, courses) => {
             //     //console.log('testeando' + testeando);
             //     //console.log(percent); 
             // }
+
+						
+            //if(intro === undefined || intro == null) {
+					
+            //} else {
+            //    let testeando = intro.percent; 
+                //console.log(testeando); 
+            //}
            
         })
         const alumna = {
