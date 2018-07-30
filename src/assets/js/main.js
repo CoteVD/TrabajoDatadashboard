@@ -1,109 +1,75 @@
-window.onload = () => {
-  data();
-};
-/* Objetos que guardarán la información */
-let users = {};
-let cohorts = {};
-let progress = {};
+let users = null;
+let progress = null;
+let cohorts = null;
+let usersStats = null;
 
-/* Funcion para llamar a las promesas */
-const data = () => {
-  /* Promesa que obtiene los nombres */
-  fetch('../data/cohorts/lim-2018-03-pre-core-pw/users.json')
-    .then(response => response.json())
-    .then(data => {
-      users = data;
-    })
-    .catch(error => {
-      console.error("No pudimos obtener usuarios");
-      console.error("Error: " + error.stack);
-    });
+fetch('../data/cohorts/lim-2018-03-pre-core-pw/users.json')
+  .then(response => response.json())
+  .then(usersJSON => {
+    users = usersJSON;
+    completeJson();
+  })
+  .catch(error => {
+    console.error("No pudimos obtener usuarios");
+    console.error("ERROR > " + error.stack);
+  });
 
-  /* Promesa que obtiene el progreso */
-  fetch('../data/cohorts/lim-2018-03-pre-core-pw/progress.json')
-    .then(response => response.json())
-    .then(cohortsJSON => {
-      cohort = cohortsJSON;
-    })
-    .catch(error => {
-      console.error("No pudimos obtener el progreso");
-      console.error("Error: " + error.stack);
-    });
+fetch('../data/cohorts/lim-2018-03-pre-core-pw/progress.json')
+  .then(response => response.json())
+  .then(progressJSON => {
+    progress = progressJSON;
+    completeJson();
+  })
+  .catch(error => {
+    console.error("No pudimos obtener el progreso");
+    console.error("ERROR > " + error.stack);
+  });
 
-  /* Promesa que obtiene los cohortes */
-  fetch('../data/cohorts.json')
-    .then(response => response.json())
-    .then(progressJSON => {
-      progress = progressJSON;
-    })
-    .catch(error => {
-      console.error("No pudimos obtener el listado de cohorts");
-      console.error("Error: " + error.stack);
-    });
-};
+fetch('../data/cohorts.json')
+  .then(response => response.json())
+  .then(cohortsJSON => {
+    cohorts = cohortsJSON;
+    completeJson();
+  })
+  .catch(error => {
+    console.error("No pudimos obtener el listado de cohorts");
+    console.error("ERROR > " + error.stack);
+  });
 
-/* Llama los datos a imprimir en la página */
-courseData = () => {
-  /* Funcionalidad para que se muestren los datos y se oculten las busquedas */
-  search.style.display = 'none';
-  generalResults.style.display = 'block';
-  renderUsers(users, computeUsersStats(users, progress));
-  calculateTotals(computeUsersStats(users, progress));
-};
-
-/* Se imprimen los datos en la tabla */
-const renderUsers = (user, processed) => {
-  let rankingNumber = 0;
-  for (let i = 0; i < processed.length; i++) {
-    rankingNumber++;
-    if (processed[i] === 'Usuario no tiene información que mostrar' && user[i].role === 'student') {
-      tableName.innerHTML += '<tr>' +
-        '<td>' + rankingNumber + '</td>' +
-        '<td>' + user[i].name.toUpperCase() + '</td>' +
-        '<td class="numbers">' + '-' + '</td>' +
-        '<td class="numbers">' + '-' + '</td>' +
-        '<td class="numbers">' + '-' + '</td>' +
-        '<td class="numbers">' + '-' + '</td>' +
-        '</tr>';
-    } else if (user[i].role === 'student') {
-      tableName.innerHTML += '<tr>' +
-        '<td>' + rankingNumber + '</td>' +
-        '<td>' + user[i].name.toUpperCase() + '</td>' +
-        '<td class="numbers">' + Math.round(processed[i].stats.reads.percent) + '%' + '</td>' +
-        '<td class="numbers">' + Math.round(processed[i].stats.quizzes.percent) + '%' + '</td>' +
-        '<td class="numbers">' + Math.round(processed[i].stats.practice.percent) + '%' + '</td>' +
-        '<td class="numbers">' + Math.round(processed[i].stats.percent) + '%' + '</td>' +
-        '</tr>';
-    };
-  };
-};
-
-/* Función que cambia el nombre en el botón de ordenamiento de usuarias */
-onToggleSort = () => {
-  const direction = toggleSort.innerText;
-  if (direction === "Orden de completitud ascendente") {
-    toggleSort.innerText = "Orden de completitud descendente";
-  } else {
-    toggleSort.innerText = "Orden de completitud ascendente";
+function completeJson() {
+  if (users && progress && cohorts) {
+    const cohort = cohorts.find(item => item.id === 'lim-2018-03-pre-core-pw');
+    const courses = Object.keys(cohort.coursesIndex);
+    usersStats = window.computeUsersStats(users, progress, courses);
   }
-  /* Función que ordena e imprime a las usuarias */
+}
+/*
+function onToggleSort() {
+  const direction = toggleSort.innerText;
+  if (direction == "ASC") {
+    toggleSort.innerText = "DESC";
+  } else {
+    toggleSort.innerText = "ASC";
+  }
+  //llamamos a la funcion de ordenamiento para que que ordene los usuarios
   const sortedUsers = window.sortUsers(usersStats, "percent", direction);
-  nameList.innerHTML = '';
+  //no se hace el getElementById por que en JS todo lo declarado en el html con un id queda como variable global :O
+  studentContainer.innerHTML = "";
   for (let student of sortedUsers) {
-    nameList.innerHTML += `
-      <p>Nombre: ${student.name.toUpperCase()} Porcentaje de completitud general: ${student.stats.percent}%</p>
+    studentContainer.innerHTML += `
+      <p>${student.name} ${student.stats.percent}</p>
     `;
   }
-};
+}
 
-/* Función para buscar alumna por nombre */
-searchStudent = () => {
-  const search = studentSearch.value;
+function onSearchBoxChange() {
+  const search = searchBox.value;
   const filteredUsers = window.filterUsers(usersStats, search);
-  nameList.innerHTML = '';
+  studentContainer.innerHTML = "";
   filteredUsers.forEach(student => {
-    nameList.innerHTML += `
-      <p>${student.name.toUpperCase()}</p>
+    studentContainer.innerHTML += `
+      <p>${student.name}</p>
     `;
   });
-};
+}
+*/
