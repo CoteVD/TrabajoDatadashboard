@@ -1,10 +1,22 @@
 /*Estilos propios*/
+#logo {
+  width: 20%;
+}
+
+.nav-item {
+  color:#999999;
+}
+
 #search{
   display: none;
 }
 
 #generalResults{
   display: none;
+}
+
+#btnGo {
+  width: 2rem;
 }
 
 button{
@@ -14,28 +26,12 @@ button{
   color: black;
 }
 
-@media (max-width: 991px) {
-
-  .navbar{
-    background-color: #ffc107;
-  }
-
-  #logo {
-    display: none;
-  }
-
-  .navbar-toggler{
-    background-color: #ffc107;
-  }
-
-  #navbarNavAltMarkup{
-    background-color: #ffc107;
-  }
+.navbar{
+    background-color: white;
 }
 
-.menu{
-  margin: 3px;
-  padding: 3px;
+.navbar-toggler {
+  background: #ffc107;
 }
 
 h4{
@@ -45,4 +41,12 @@ h4{
 
 #nameList{
   border: #999999 1px solid;
+}
+
+.firstData {
+  margin-left: 1rem;
+}
+
+.secondData {
+  margin-left: 1rem;
 }

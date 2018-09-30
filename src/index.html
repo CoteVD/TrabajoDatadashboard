@@ -6,90 +6,90 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Data Dashboard</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
     crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-
-  <div class="row">
-    <!--El Sidebar-->
-    <div class="col-lg-3 navbar-light p-0">
-      <nav class="navbar navbar-expand-lg flex-lg-column text-center p-0">
-        <!--El logo grande de Laboratoria-->
-        <a class="navbar-brand">
-          <img src="assets/img/logo.png" class="img-fluid p-1 ml-3" id="logo" width="100%" alt="logolab">
-        </a>
-        <!--Menú colapsado en pantallas pequeñas-->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-          aria-expanded="false" aria-label="Toggle navigation">
+  <div class="container-fluid m-0 p-0">
+    <div class="row">
+      <nav class="navbar navbar-expand-sm">
+        <img src="assets/img/logo.png" class="img ml-2" id="logo" alt="logolab">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <!--Menú-->
-        <div class="collapse navbar-collapse p-0" id="navbarNavAltMarkup">
-          <div class="navbar-nav flex-lg-column">
-            <a class="nav-item nav-link lead py-3">Valentina Smith</a>
-            <a class="nav-item nav-link lead">Admin</a>
-            <a class="nav-item nav-link lead" onclick="dataDash()">Dashboard</a>
-            <a class="nav-item nav-link lead">Configuración</a>
-          </div>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto text-center">
+            <li class="nav-item">
+              <a class="nav-item nav-link lead ml-5">Valentina Smith</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-item nav-link lead ml-4">Admin</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-item nav-link lead ml-4" onclick="dataDash()">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-item nav-link lead ml-4">Configuración</a>
+            </li>
+          </ul>
         </div>
       </nav>
     </div>
+
     <!--Primera página HTML con la primera búsqueda-->
-    <div class="col-lg-9 p-0" id="search">
-      <h3 class="heavy bg-warning text-start p-3">Data Dashboard</h3>
+    <div class="row" id="search">
+      <h3 class="firstData heavy bg-warning text-start p-3">Data Dashboard</h3>
       <!--Menú países y cohort-->
-      <select class="menu">
-        <option value="example">Sede Perú</option>
-        <option value="cohort1" onclick="courseData()">lim-2018-03-pre-core-pw</option>
-      </select>
-    </div>
-    <!--Aquí va el titulo Data dashboard que muestra los nombres de las alumnas-->
-    <div class="col-lg-9 p-0" id="generalResults">
-      <h3 class="heavy bg-warning text-start p-3">Data Dashboard</h3>
-      <div class="row">
-        <!--Menú alumnas-->
-        <input type="text" id="studentSearch" class="ml-3" onkeyup="searchStudent()" placeholder="Search for student.." title="Alumna">
-        <!--Menú orden-->
-        <div>
-          <button id="toggleSort" class="ml-3" onclick="onToggleSort()">Orden de completitud ascendente</button>
-        </div>
-      </div>
-      <!--Cohort-->
-      <h4 class="pt-5 pl-4 heavy">Lim-2018-03-pre-core-pw</h4>
-      <!--Aquí va el contenedor con los datos del cohort-->
       <div class="container-fluid">
-        <div class="row">
-          <div class="col">
-            <h4>% Lecturas del curso</h4>
-            <h3 id="totalReads"></h3>
-          </div>
-          <div class="col">
-            <h4>% Quizzes del curso</h4>
-            <h3 id="totalQuizzes"></h3>
-          </div>
-          <div class="col">
-            <h4>% Ejercicios del curso</h4>
-            <h3 id="totalExercises"></h3>
-          </div>
-          <div class="col">
-            <h4>% Total de completitud</h4>
-            <h3 id="courseTotal"></h3>
-          </div>
-        </div>
+        <select class="menu" id="preadPeru">
+          <option value="example">Sede Perú</option>
+          <option value="cohort1">Pre Admisión</option>
+        </select>
+        <select class="menu">
+          <option value="example">Sede Chile</option>
+          <option value="cohort2"></option>
+        </select>
+        <select class="menu">
+          <option value="example">Sede Brazil</option>
+          <option value="cohort3"></option>
+        </select>
+        <select class="menu">
+          <option value="example">Sede México</option>
+          <option value="cohort4"></option>
+        </select>
+        <select class="menu">
+          <option value="example">Sede Colombia</option>
+          <option value="cohort5"></option>
+        </select>
+        <button id="btnGo" onclick="goResults()" class="ml-2 p-1">Ir</button>
+      </div>
+    </div>
+
+    <!--Aquí va el titulo Data dashboard que muestra los nombres de las alumnas-->
+    <div class="row" id="generalResults">
+      <h3 class="secondData heavy bg-warning text-start p-3">Data Dashboard</h3>
+      <!--Menú alumnas-->
+      <div class="container-fluid ml-2">
+        <input type="text" id="studentSearch" onkeyup="onSearchBoxChange()" type="search" placeholder="Escriba el nombre a buscar">
+        <!--Menú orden-->
+        <button id="toggleSort" onclick="onToggleSort()" class="heavy ml-3 p-1">Ordenar alumnas</button>
+        <!--Cohort-->
+        <h4 class="pt-5 pl-4 heavy">Pre Admisión</h4>
+        <!--Aquí va el contenedor con los datos del cohort-->
       </div>
       <!--Aquí va contenedor de la data de las alumnas del cohort seleccionado-->
-      <div class="container-fluid">
+      <div class="container-fluid col-12">
         <table id="studentsData" class="table table-sm">
           <thead>
             <tr class="table-warning">
-              <th>N°</th>
               <th>Nombre</th>
+              <th>Ejercicios</th>
               <th>Lecturas</th>
               <th>Quizzes</th>
-              <th>Ejercicios</th>
               <th>Porcentaje de completitud</th>
             </tr>
           </thead>
@@ -99,14 +99,16 @@
       </div>
     </div>
   </div>
+
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
     crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
-  <script src="assets/js/main.js"></script>
+
   <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
   <script src="assets/js/funcionalidad.js"></script>
 </body>
 
