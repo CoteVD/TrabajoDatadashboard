@@ -1,4 +1,13 @@
 /*Estilos propios*/
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.navStyle{
+  width: 100%;
+}
+
 #logo {
   width: 20%;
 }
@@ -27,7 +36,8 @@ button{
 }
 
 .navbar{
-    background-color: white;
+  width: 100%;
+  background-color: white;
 }
 
 .navbar-toggler {
@@ -43,10 +53,14 @@ h4{
   border: #999999 1px solid;
 }
 
+.scrollDiv{
+  overflow-x: scroll;
+}
+
 .firstData {
-  margin-left: 1rem;
+  width: 100%;
 }
 
 .secondData {
-  margin-left: 1rem;
+  width: 100%;
 }

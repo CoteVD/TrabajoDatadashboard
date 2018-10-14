@@ -12,90 +12,118 @@
 </head>
 
 <body>
-  <div class="container-fluid m-0 p-0">
-    <div class="row">
-      <nav class="navbar navbar-expand-sm">
-        <img src="assets/img/logo.png" class="img ml-2" id="logo" alt="logolab">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto text-center">
-            <li class="nav-item">
-              <a class="nav-item nav-link lead ml-5">Valentina Smith</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-item nav-link lead ml-4">Admin</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-item nav-link lead ml-4" onclick="dataDash()">Dashboard</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-item nav-link lead ml-4">Configuración</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-sm navStyle">
+    <img src="assets/img/logo.png" class="img" id="logo" alt="logolab">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto text-center">
+        <li class="nav-item">
+          <a class="nav-item nav-link lead ml-5">Valentina Smith</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-item nav-link lead ml-4">Admin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-item nav-link lead ml-4" onclick="dataDash()">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-item nav-link lead ml-4">Configuración</a>
+        </li>
+      </ul>
     </div>
+  </nav>
 
+  <div class="container-fluid m-0 p-0">
     <!--Primera página HTML con la primera búsqueda-->
-    <div class="row" id="search">
-      <h3 class="firstData heavy bg-warning text-start p-3">Data Dashboard</h3>
+    <div id="search">
+      <div class="row titleNav p-0">
+        <div class="col-12 p-0">
+          <h3 class="heavy firstData bg-warning text-start pl-4 pt-3 pb-3 pr-0">Data Dashboard</h3>
+        </div>
+      </div>
       <!--Menú países y cohort-->
-      <div class="container-fluid">
-        <select class="menu" id="preadPeru">
-          <option value="example">Sede Perú</option>
-          <option value="cohort1">Pre Admisión</option>
-        </select>
-        <select class="menu">
-          <option value="example">Sede Chile</option>
-          <option value="cohort2"></option>
-        </select>
-        <select class="menu">
-          <option value="example">Sede Brazil</option>
-          <option value="cohort3"></option>
-        </select>
-        <select class="menu">
-          <option value="example">Sede México</option>
-          <option value="cohort4"></option>
-        </select>
-        <select class="menu">
-          <option value="example">Sede Colombia</option>
-          <option value="cohort5"></option>
-        </select>
-        <button id="btnGo" onclick="goResults()" class="ml-2 p-1">Ir</button>
+      <div class="row p-0">
+        <div class="col text-center">
+          <select class="menu" id="preadPeru">
+            <option value="example">Sede Perú</option>
+            <option value="cohort1">Pre Admisión</option>
+          </select>
+        </div>
+        <div class="col text-center">
+          <select class="menu">
+            <option value="example">Sede Chile</option>
+            <option value="cohort2"></option>
+          </select>
+        </div>
+        <div class="col text-center">
+          <select class="menu">
+            <option value="example">Sede Brazil</option>
+            <option value="cohort3"></option>
+          </select>
+        </div>
+        <div class="col text-center">
+          <select class="menu">
+            <option value="example">Sede México</option>
+            <option value="cohort4"></option>
+          </select>
+        </div>
+        <div class="col text-center">
+          <select class="menu">
+            <option value="example">Sede Colombia</option>
+            <option value="cohort5"></option>
+          </select>
+        </div>
+        <div class="col float-left">
+          <button id="btnGo" onclick="goResults()" class="p-1">Ir</button>
+        </div>
       </div>
     </div>
-
     <!--Aquí va el titulo Data dashboard que muestra los nombres de las alumnas-->
-    <div class="row" id="generalResults">
-      <h3 class="secondData heavy bg-warning text-start p-3">Data Dashboard</h3>
+    <div id="generalResults">
+      <div class="row p-0">
+        <div class="col-12 px-0">
+          <h3 class="secondData heavy bg-warning text-start pl-4 pt-3 pb-3 pr-0">Data Dashboard</h3>
+        </div>
+      </div>
       <!--Menú alumnas-->
-      <div class="container-fluid ml-2">
-        <input type="text" id="studentSearch" onkeyup="onSearchBoxChange()" type="search" placeholder="Escriba el nombre a buscar">
+      <div class="row p-0">
+        <div class="col text-center">
+          <input type="text" id="studentSearch" onkeyup="onSearchBoxChange()" type="search" placeholder="Escriba el nombre a buscar">
+        </div>
         <!--Menú orden-->
-        <button id="toggleSort" onclick="onToggleSort()" class="heavy ml-3 p-1">Ordenar alumnas</button>
-        <!--Cohort-->
-        <h4 class="pt-5 pl-4 heavy">Pre Admisión</h4>
-        <!--Aquí va el contenedor con los datos del cohort-->
+        <div class="col">
+          <button id="toggleSort" onclick="onToggleSort()" class="heavy float-left p-1">Ordenar alumnas</button>
+        </div>
+      </div>
+      <!--Cohort-->
+      <div class="row p-0">
+        <div class="col-12">
+          <h4 class="float-left pt-5 pl-4 heavy">Pre Admisión</h4>
+        </div>
       </div>
       <!--Aquí va contenedor de la data de las alumnas del cohort seleccionado-->
-      <div class="container-fluid col-12">
-        <table id="studentsData" class="table table-sm">
-          <thead>
-            <tr class="table-warning">
-              <th>Nombre</th>
-              <th>Ejercicios</th>
-              <th>Lecturas</th>
-              <th>Quizzes</th>
-              <th>Porcentaje de completitud</th>
-            </tr>
-          </thead>
-          <tbody id="studentsName">
-          </tbody>
-        </table>
+      <div class="row p-0 scrollDiv">
+        <div class="col-12 p-0">
+          <table id="studentsData" class="table mx-4">
+            <thead>
+              <tr class="table-warning">
+                <th>Nombre</th>
+                <th>Ejercicios</th>
+                <th>Lecturas</th>
+                <th>Quizzes</th>
+                <th>Porcentaje de completitud</th>
+              </tr>
+            </thead>
+            <tbody id="studentsName">
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

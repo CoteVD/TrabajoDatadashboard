@@ -55,6 +55,7 @@ goResults = () => {
 
   for (let student of sortedUsers) {
     studentsName.innerHTML += `
+  <div class="col-12">
     <tr>
     <td>${student.name}</td>
     <td>${student.stats.exercises.percent} % </td>
@@ -62,6 +63,7 @@ goResults = () => {
     <td>${student.stats.quizzes.percent} %</td>
     <td>${student.stats.percent} %</td>
     </tr> 
+  </div>
     `;
   }
   } else {
@@ -83,13 +85,15 @@ onToggleSort = () => {
 
   for (let student of sortedUsers) {
     studentsName.innerHTML += `
+  <div class="col-12">
     <tr>
     <td>${student.name}</td>
     <td>${student.stats.exercises.percent} % </td>
     <td>${student.stats.reads.percent} %</td>
-    <td>${student.stats.quizzes.percent} %</td>
+    <td${student.stats.quizzes.percent} %</td>
     <td>${student.stats.percent} %</td>
-    </tr> 
+    </tr>
+  </div> 
     `;
   }
 };
@@ -100,13 +104,15 @@ onSearchBoxChange = () => {
   studentsName.innerHTML = "";
   filteredUsers.forEach(student => {
     studentsName.innerHTML += `
+  <div class="col-12">
     <tr>
     <td>${student.name}</td>
     <td>${student.stats.exercises.percent} % </td>
     <td>${student.stats.reads.percent} %</td>
     <td>${student.stats.quizzes.percent} %</td>
     <td>${student.stats.percent} %</td>
-    </tr> 
+    </tr>
+  </div> 
     `;
   });
 };
